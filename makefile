@@ -47,13 +47,13 @@ nanopore.long.sam:
 %.short.sam: %.long.sam
 	awk -F '\t' '{$9="*"}' -o $@ $<
 
-nanopore.lst: nanopore.paf nanopore.paf.gz nanopore.paf.bz2 nanopore.paf.xz nanopore.baf nanopore.baf.gz nanopore.baf.bz2 nanopore.baf.xz #nanopore.short.sam nanopore.short.bam nanopore.short.cram nanopore.long.sam nanopore.long.bam nanopore.long.cram
+nanopore.csv: nanopore.paf nanopore.paf.gz nanopore.paf.bz2 nanopore.paf.xz nanopore.baf nanopore.baf.gz nanopore.baf.bz2 nanopore.baf.xz nanopore.short.sam nanopore.short.bam nanopore.short.cram nanopore.long.sam nanopore.long.bam nanopore.long.cram
 	ls -lh $^ > nanopore.lst
 
-pacbio.lst: pacbio.paf pacbio.paf.gz pacbio.paf.bz2 pacbio.paf.xz pacbio.baf pacbio.baf.gz pacbio.baf.bz2 pacbio.baf.xz #pacbio.short.sam pacbio.short.bam pacbio.short.cram pacbio.long.sam pacbio.long.bam pacbio.long.cram
+pacbio.csv: pacbio.paf pacbio.paf.gz pacbio.paf.bz2 pacbio.paf.xz pacbio.baf pacbio.baf.gz pacbio.baf.bz2 pacbio.baf.xz pacbio.short.sam pacbio.short.bam pacbio.short.cram pacbio.long.sam pacbio.long.bam pacbio.long.cram
 	ls -lh $^ > pacbio.lst
 
-run: nanopore.lst pacbio.lst
+run: nanopore.csv pacbio.csv
 
 .PHONY = clean
 clean:
