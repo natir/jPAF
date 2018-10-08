@@ -4,7 +4,7 @@ download_data: data/pacbio.fasta data/nanopore.fasta
 data:
 	mkdir data
 
-data/pacbio.tar.gz:
+data/pacbio.tar.gz: data
 	curl https://s3.amazonaws.com/files.pacb.com/datasets/secondary-analysis/e-coli-k12-P6C4/p6c4_ecoli_RSII_DDR2_with_15kb_cut_E01_1.tar.gz > data/pacbio.tar.gz
 
 data/pacbio.fasta: data/pacbio.tar.gz
