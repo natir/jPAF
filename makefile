@@ -42,7 +42,7 @@ nanopore.long.sam:
 	samtools view -O cram,no_ref -o $@ $<
 
 %.baf %.baf.gz %.baf.bz2 %.baf.xz: %.paf
-	./paf2baf.py $< $@
+	./paf2jpaf.py $< $@
 
 %.short.sam: %.long.sam
 	awk -F '\t' '{$9="*"}' -o $@ $<
