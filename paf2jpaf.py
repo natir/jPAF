@@ -3,7 +3,7 @@
 import sys
 import json
 
-import gz
+import gzip
 import bz2
 import lzma
 
@@ -61,14 +61,14 @@ def main(args):
     out_file = open(args[1], "w")
     out_file.write(val)
     
-    out_file = gz.open(args[1]+".gz", "wb", preset=9)
-    out_file.write(val)
+    out_file = gzip.open(args[1]+".gz", "wb", compresslevel=9)
+    out_file.write(val.encode())
     
-    out_file = bz2.open(args[1]+".bz2", "wb", preset=9)
-    out_file.write(val)
+    out_file = bz2.open(args[1]+".bz2", "wb", compresslevel=9)
+    out_file.write(val.encode())
     
     out_file = lzma.open(args[1]+".xz", "wb", preset=9)
-    out_file.write(val)
+    out_file.write(val.encode())
 
 if __name__ == '__main__':
     main(sys.argv[1:])
