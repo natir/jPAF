@@ -41,17 +41,17 @@ nanopore.long.sam:
 %.cram: %.sam
 	samtools view -O cram,no_ref -o $@ $<
 
-%.baf %.baf.gz %.baf.bz2 %.baf.xz: %.paf
+%.jpaf %.jpaf.gz %.jpaf.bz2 %.jpaf.xz: %.paf
 	./paf2jpaf.py $< $@
 
 %.short.sam: %.long.sam
 	awk -F '\t' '{$9="*"}' -o $@ $<
 
-nanopore.csv: nanopore.paf nanopore.paf.gz nanopore.paf.bz2 nanopore.paf.xz nanopore.baf nanopore.baf.gz nanopore.baf.bz2 nanopore.baf.xz nanopore.short.sam nanopore.short.bam nanopore.short.cram nanopore.long.sam nanopore.long.bam nanopore.long.cram
-	ls -lh $^ > nanopore.lst
+nanopore.csv: nanopore.paf nanopore.paf.gz nanopore.paf.bz2 nanopore.paf.xz nanopore.jpaf nanopore.jpaf.gz nanopore.jpaf.bz2 nanopore.jpaf.xz nanopore.short.sam nanopore.short.bam nanopore.short.cram nanopore.long.sam nanopore.long.bam nanopore.long.cram
+	./save_space.py $^ > nanopore.csv
 
-pacbio.csv: pacbio.paf pacbio.paf.gz pacbio.paf.bz2 pacbio.paf.xz pacbio.baf pacbio.baf.gz pacbio.baf.bz2 pacbio.baf.xz pacbio.short.sam pacbio.short.bam pacbio.short.cram pacbio.long.sam pacbio.long.bam pacbio.long.cram
-	ls -lh $^ > pacbio.lst
+pacbio.csv: pacbio.paf pacbio.paf.gz pacbio.paf.bz2 pacbio.paf.xz pacbio.jpaf pacbio.jpaf.gz pacbio.jpaf.bz2 pacbio.jpaf.xz pacbio.short.sam pacbio.short.bam pacbio.short.cram pacbio.long.sam pacbio.long.bam pacbio.long.cram
+	./save_space.py $^ > pacbio.csv
 
 run: nanopore.csv pacbio.csv
 
