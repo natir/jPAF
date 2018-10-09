@@ -13,7 +13,6 @@ from collections import defaultdict
 def main(args):
 
     files = args
-    print(files)
 
     file2size = dict()
     
