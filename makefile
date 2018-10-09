@@ -36,10 +36,10 @@ nanopore.long.sam:
 	xz -9 -kf $<
 
 %.bam: %.sam
-	samtools view -O bam -o $@ $<
+	samtools view -@ 8 -O bam -o $@ $<
 
 %.cram: %.sam
-	samtools view -O cram,no_ref -o $@ $<
+	samtools view -@ 8 -O cram,no_ref -o $@ $<
 
 %.jpaf %.jpaf.gz %.jpaf.bz2 %.jpaf.xz: %.paf
 	./paf2jpaf.py $< $@
