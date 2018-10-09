@@ -45,7 +45,7 @@ nanopore.long.sam:
 	./paf2jpaf.py $< $@
 
 %.short.sam: %.long.sam
-	awk -F '\t' -v OFS='\t' '{if ($$1 ~ /^[^@]/) {$$6="*"; $$10="*";} print}' $< > $@
+	awk -F '\t' -v OFS='\t' '{if ($$1 ~ /^[^@]/) {$$10="*";} print}' $< > $@
 
 nanopore.csv: nanopore.paf nanopore.paf.gz nanopore.paf.bz2 nanopore.paf.xz nanopore.jpaf nanopore.jpaf.gz nanopore.jpaf.bz2 nanopore.jpaf.xz nanopore.short.sam nanopore.short.bam nanopore.short.cram nanopore.long.sam nanopore.long.bam nanopore.long.cram
 	./save_space.py $^ > nanopore.csv
