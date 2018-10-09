@@ -20,11 +20,11 @@ mapping: pacbio.paf pacbio.long.sam nanopore.paf nanopore.long.sam
 pacbio.paf:
 	minimap2 -x ava-pb data/pacbio.fasta data/pacbio.fasta > pacbio.paf
 pacbio.long.sam:
-	minimap2 -x ava-pb -a data/pacbio.fasta data/pacbio.fasta > pacbio.sam
+	minimap2 -x ava-pb -a data/pacbio.fasta data/pacbio.fasta > pacbio.long.sam
 nanopore.paf:
 	minimap2 -x ava-ont data/nanopore.fasta data/nanopore.fasta > nanopore.paf
 nanopore.long.sam:
-	minimap2 -x ava-ont -a data/nanopore.fasta data/nanopore.fasta > nanopore.sam
+	minimap2 -x ava-ont -a data/nanopore.fasta data/nanopore.fasta > nanopore.long.sam
 
 %.gz: %
 	gzip -9 -kf $<
