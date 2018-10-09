@@ -48,10 +48,10 @@ nanopore.long.sam:
 	awk -F '\t' -v OFS='\t' '{if ($$1 ~ /^[^@]/) {$$10="*";$$11="*"} print}' $< > $@
 
 nanopore.csv: nanopore.paf nanopore.paf.gz nanopore.paf.bz2 nanopore.paf.xz nanopore.jpaf nanopore.jpaf.gz nanopore.jpaf.bz2 nanopore.jpaf.xz nanopore.short.sam nanopore.short.bam nanopore.short.cram nanopore.long.sam nanopore.long.bam nanopore.long.cram
-	./save_space.py $^ > nanopore.csv
+	./saved_space.py $^ > nanopore.csv
 
 pacbio.csv: pacbio.paf pacbio.paf.gz pacbio.paf.bz2 pacbio.paf.xz pacbio.jpaf pacbio.jpaf.gz pacbio.jpaf.bz2 pacbio.jpaf.xz pacbio.short.sam pacbio.short.bam pacbio.short.cram pacbio.long.sam pacbio.long.bam pacbio.long.cram
-	./save_space.py $^ > pacbio.csv
+	./saved_space.py $^ > pacbio.csv
 
 run: nanopore.csv pacbio.csv
 
